@@ -60,6 +60,8 @@ ng serve
 - Autenticación de usuarios
 - Validación de credenciales
 - Redirección automática al dashboard
+- <img width="1395" height="948" alt="Screenshot from 2026-02-04 12-07-24" src="https://github.com/user-attachments/assets/352fbe95-3240-4aae-a0d8-1196c15f61e2" />
+
 
 ### 📊 Dashboard
 - **Solicitudes Pendientes**: Widget clickeable que muestra solicitudes de usuarios por aprobar
@@ -68,6 +70,8 @@ ng serve
 - **Nuevos este mes**: Usuarios registrados en el mes actual
 - **Gráficos**: Visualización de datos por rol y crecimiento de usuarios
 - **Acciones rápidas**: Acceso directo a gestión de usuarios
+- <img width="1594" height="961" alt="Screenshot from 2026-02-04 12-07-57" src="https://github.com/user-attachments/assets/2b3b8282-84e5-4125-be6a-db5d89681894" />
+
 
 ### 👥 Gestión de Usuarios
 - **Lista de usuarios**: Vista en cards con información completa
@@ -75,6 +79,10 @@ ng serve
 - **Eliminar usuario**: Funcionalidad con modal de confirmación
 - **Filtros por rol**: Admin y Natural
 - **Información mostrada**: Email, cédula, tipo documento, teléfono, rol
+- <img width="1594" height="961" alt="Screenshot from 2026-02-04 12-08-20" src="https://github.com/user-attachments/assets/b6258cff-8bfe-4e9b-9ef4-134a6aa67120" />
+- <img width="1594" height="961" alt="Screenshot from 2026-02-04 12-08-33" src="https://github.com/user-attachments/assets/236cdcf5-0e22-40e7-ba79-cab550a93ce4" />
+- <img width="1594" height="961" alt="Screenshot from 2026-02-04 12-08-50" src="https://github.com/user-attachments/assets/9a3cd23c-c440-4cea-be48-e8c56657df6c" />
+
 
 ### 📋 Solicitudes de Usuarios
 - **Tabla de solicitudes**: Lista completa de solicitudes pendientes
@@ -82,6 +90,8 @@ ng serve
 - **Acciones**: Aprobar o rechazar solicitudes
 - **Información detallada**: Todos los datos del solicitante
 - **Navegación**: Acceso directo a gestión de usuarios
+- <img width="1594" height="961" alt="Screenshot from 2026-02-04 12-08-08" src="https://github.com/user-attachments/assets/1b96ecc5-324d-4c05-a779-d972020f132e" />
+
 
 ## Desarrollo
 
