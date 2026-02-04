@@ -1,59 +1,144 @@
-# Users
+# Sistema de Gestión de Usuarios
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.2.
+Aplicación Angular para la gestión de usuarios con dashboard administrativo y sistema de solicitudes.
 
-## Development server
+## Configuración del Entorno
 
-To start a local development server, run:
+### Variables de Entorno
 
+El proyecto utiliza archivos de configuración de entorno ubicados en `src/environments/`:
+
+**Desarrollo (`environment.ts`):**
+```typescript
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:3001/api'
+};
+```
+
+**Producción (`environment.prod.ts`):**
+```typescript
+export const environment = {
+  production: true,
+  apiUrl: 'https://your-api-url.com/api'
+};
+```
+
+### Usuario Demo
+
+Para probar la aplicación, crea el siguiente usuario en tu base de datos:
+
+```
+Email: admin@test.com
+Contraseña: admin123
+Rol: admin
+```
+
+## Instalación y Configuración
+
+1. **Instalar dependencias:**
+```bash
+npm install
+```
+
+2. **Configurar variables de entorno:**
+   - Actualiza `src/environments/environment.ts` con la URL de tu API
+   - Para producción, actualiza `src/environments/environment.prod.ts`
+
+3. **Iniciar servidor de desarrollo:**
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+4. **Acceder a la aplicación:**
+   - URL: `http://localhost:4200/`
+   - Login con: `admin@test.com` / `admin123`
 
-## Code scaffolding
+## Vistas de la Aplicación
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### 🔐 Login
+- Autenticación de usuarios
+- Validación de credenciales
+- Redirección automática al dashboard
 
+### 📊 Dashboard
+- **Solicitudes Pendientes**: Widget clickeable que muestra solicitudes de usuarios por aprobar
+- **Usuarios Activos**: Contador de usuarios activos en el sistema
+- **Administradores**: Número total de usuarios con rol admin
+- **Nuevos este mes**: Usuarios registrados en el mes actual
+- **Gráficos**: Visualización de datos por rol y crecimiento de usuarios
+- **Acciones rápidas**: Acceso directo a gestión de usuarios
+
+### 👥 Gestión de Usuarios
+- **Lista de usuarios**: Vista en cards con información completa
+- **Crear usuario**: Formulario para registro de nuevos usuarios
+- **Eliminar usuario**: Funcionalidad con modal de confirmación
+- **Filtros por rol**: Admin y Natural
+- **Información mostrada**: Email, cédula, tipo documento, teléfono, rol
+
+### 📋 Solicitudes de Usuarios
+- **Tabla de solicitudes**: Lista completa de solicitudes pendientes
+- **Estados**: Pendiente, Aprobada, Rechazada
+- **Acciones**: Aprobar o rechazar solicitudes
+- **Información detallada**: Todos los datos del solicitante
+- **Navegación**: Acceso directo a gestión de usuarios
+
+## Desarrollo
+
+### Servidor de desarrollo
 ```bash
-ng generate component component-name
+ng serve
 ```
+Navega a `http://localhost:4200/`. La aplicación se recargará automáticamente cuando modifiques los archivos fuente.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
+### Construcción
 ```bash
 ng build
 ```
+Los artefactos de construcción se almacenarán en el directorio `dist/`.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### Construcción para producción
+```bash
+ng build --configuration production
+```
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
+### Pruebas unitarias
 ```bash
 ng test
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
+### Pruebas end-to-end
 ```bash
 ng e2e
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Estructura del Proyecto
 
-## Additional Resources
+```
+src/
+├── app/
+│   ├── core/                 # Servicios y modelos principales
+│   │   ├── guards/           # Guards de autenticación
+│   │   ├── models/           # Interfaces y modelos
+│   │   └── services/         # Servicios de API
+│   ├── features/             # Módulos de funcionalidades
+│   │   ├── auth/             # Autenticación
+│   │   ├── dashboard/        # Dashboard principal
+│   │   ├── users/            # Gestión de usuarios
+│   │   └── user-requests/    # Solicitudes de usuarios
+│   └── shared/               # Componentes compartidos
+│       └── components/       # Widgets y componentes reutilizables
+└── environments/             # Configuración de entornos
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Tecnologías Utilizadas
+
+- **Angular 21.1.2**: Framework principal
+- **TypeScript**: Lenguaje de programación
+- **RxJS**: Programación reactiva
+- **Angular Material**: Componentes de UI
+- **SCSS**: Preprocesador CSS
+
+## Recursos Adicionales
+
+Para más información sobre Angular CLI, visita la [documentación oficial](https://angular.dev/tools/cli).
