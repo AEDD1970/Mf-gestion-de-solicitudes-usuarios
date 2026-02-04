@@ -1,0 +1,70 @@
+<div class="user-list-container">
+  <header class="header">
+    <div class="header-left">
+      <button class="btn-back" (click)="goBack()">
+        ← Volver
+      </button>
+      <h1>Gestión de Usuarios</h1>
+    </div>
+    <div class="header-actions">
+      <button class="btn-primary" (click)="showCreateForm = true">
+        Crear Usuario
+      </button>
+      <button class="btn-secondary" (click)="logout()">
+        Cerrar Sesión
+      </button>
+    </div>
+  </header>
+
+  <app-user-form 
+    *ngIf="showCreateForm"
+    (userCreated)="onUserCreated($event)"
+    (cancelled)="showCreateForm = false">
+  </app-user-form>
+
+  <div class="users-grid">
+    <div class="user-card" *ngFor="let user of users">
+      <div class="user-info">
+        <h3>{{ user.email }}</h3>
+        <p><strong>Cédula:</strong> {{ user.cedula }}</p>
+        <p><strong>Tipo Doc:</strong> {{ user.tipoDocumento }}</p>
+        <p><strong>Teléfono:</strong> {{ user.telefono }}</p>
+        <span class="role-badge" [class]="'role-' + user.rol">
+          {{ user.rol }}
+        </span>
+      </div>
+      <div class="user-actions">
+        <button 
+          class="btn-danger" 
+          (click)="openDeleteModal(user)"
+          [disabled]="user.id === currentUser?.id">
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="empty-state" *ngIf="!users || users.length === 0">
+    <p>No hay usuarios registrados</p>
+  </div>
+  
+  <!-- Modal de confirmación -->
+  <div class="modal-overlay" *ngIf="showDeleteModal" (click)="cancelDelete()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <div class="modal-header">
+        <h3>Eliminar Usuario</h3>
+      </div>
+      <div class="modal-body">
+        <p>¿Estás seguro que deseas eliminar el usuario <strong>{{userToDelete?.email}}</strong>? Esta acción no tiene vuelta atrás.</p>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-secondary" (click)="cancelDelete()">
+          Cancelar
+        </button>
+        <button class="btn-danger" (click)="confirmDelete()">
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,110 @@
+<div class="form-overlay">
+  <div class="form-modal">
+    <div class="form-header">
+      <h2>Crear Usuario</h2>
+      <button class="close-btn" (click)="cancel()">&times;</button>
+    </div>
+    
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input 
+            type="email" 
+            id="email" 
+            formControlName="email"
+            [class.error]="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+          <div class="error-message" *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+            Email válido es requerido
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="password">Contraseña *</label>
+          <div class="password-input">
+            <input 
+              [type]="showPassword ? 'text' : 'password'" 
+              id="password" 
+              formControlName="password"
+              [class.error]="userForm.get('password')?.invalid && userForm.get('password')?.touched">
+            <button type="button" class="password-toggle" (click)="togglePassword()">
+              <mat-icon>{{ showPassword ? 'visibility' : 'visibility_off' }}</mat-icon>
+            </button>
+          </div>
+          <div class="error-message" *ngIf="userForm.get('password')?.invalid && userForm.get('password')?.touched">
+            Contraseña es requerida (mín. 6 caracteres)
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="tipoDocumento">Tipo de Documento *</label>
+          <select 
+            id="tipoDocumento" 
+            formControlName="tipoDocumento"
+            [class.error]="userForm.get('tipoDocumento')?.invalid && userForm.get('tipoDocumento')?.touched">
+            <option value="">Seleccionar</option>
+            <option value="CC">Cédula de Ciudadanía</option>
+            <option value="CE">Cédula de Extranjería</option>
+            <option value="TI">Tarjeta de Identidad</option>
+            <option value="PP">Pasaporte</option>
+          </select>
+          <div class="error-message" *ngIf="userForm.get('tipoDocumento')?.invalid && userForm.get('tipoDocumento')?.touched">
+            Tipo de documento es requerido
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="cedula">Número de Documento *</label>
+          <input 
+            type="text" 
+            id="cedula" 
+            formControlName="cedula"
+            [class.error]="userForm.get('cedula')?.invalid && userForm.get('cedula')?.touched">
+          <div class="error-message" *ngIf="userForm.get('cedula')?.invalid && userForm.get('cedula')?.touched">
+            Número de documento es requerido
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="telefono">Teléfono *</label>
+          <input 
+            type="tel" 
+            id="telefono" 
+            formControlName="telefono"
+            [class.error]="userForm.get('telefono')?.invalid && userForm.get('telefono')?.touched">
+          <div class="error-message" *ngIf="userForm.get('telefono')?.invalid && userForm.get('telefono')?.touched">
+            Teléfono es requerido
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="rol">Rol *</label>
+          <select 
+            id="rol" 
+            formControlName="rol"
+            [class.error]="userForm.get('rol')?.invalid && userForm.get('rol')?.touched">
+            <option value="">Seleccionar</option>
+            <option value="admin">Administrador</option>
+            <option value="natural">Usuario Natural</option>
+          </select>
+          <div class="error-message" *ngIf="userForm.get('rol')?.invalid && userForm.get('rol')?.touched">
+            Rol es requerido
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-actions">
+        <button type="button" class="btn-secondary" (click)="cancel()">
+          Cancelar
+        </button>
+        <button type="submit" class="btn-primary" [disabled]="userForm.invalid || loading">
+          {{ loading ? 'Creando...' : 'Crear Usuario' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

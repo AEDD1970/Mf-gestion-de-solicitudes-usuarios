@@ -1,0 +1,91 @@
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <div class="header-content">
+      <h1>My dashboard</h1>
+      <p>Bienvenido al panel de administración</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn-primary" (click)="navigateToUsers()">
+        👥 Gestionar Usuarios
+      </button>
+      <button class="btn-secondary" (click)="logout()">
+        🚪 Cerrar Sesión
+      </button>
+    </div>
+  </header>
+
+  <div class="stats-grid">
+    <app-stat-widget
+      [value]="stats?.pendingRequests || 0"
+      label="Solicitudes Pendientes"
+      legend="Click para ver lista de solicitudes"
+      icon="📋"
+      colorClass="warning"
+      [clickable]="true"
+      (clicked)="navigateToUserRequests()">
+    </app-stat-widget>
+    
+    <app-stat-widget
+      [value]="stats?.activeUsers || 0"
+      label="Usuarios natural creados"
+      icon="✅"
+      colorClass="success">
+    </app-stat-widget>
+    
+    <app-stat-widget
+      [value]="stats?.adminUsers || 0"
+      label="Usuarios administradores Creados"
+      icon="👑"
+      colorClass="warning">
+    </app-stat-widget>
+    
+    <app-stat-widget
+      [value]="stats?.newUsersThisMonth || 0"
+      label="Nuevas solictudes de usuarios este mes"
+      icon="📈"
+      colorClass="accent">
+    </app-stat-widget>
+  </div>
+
+  <div class="charts-grid">
+    <div class="chart-item">
+      <app-chart-widget
+        title="Usuarios por Rol"
+        type="doughnut"
+        [data]="usersByRoleData?.data || []"
+        [labels]="usersByRoleData?.labels || []">
+      </app-chart-widget>
+    </div>
+    
+    <div class="chart-item">
+      <app-chart-widget
+        title="Crecimiento de Usuarios"
+        type="line"
+        [data]="userGrowthData?.data || []"
+        [labels]="userGrowthData?.labels || []">
+      </app-chart-widget>
+    </div>
+  </div>
+
+  <div class="quick-actions">
+    <div class="action-card" (click)="navigateToUsers()">
+      <div class="action-icon">👥</div>
+      <h3>Gestionar Usuarios</h3>
+      <p>Puedes visulizar, crear, editar y administrar usuarios del sistema</p>
+    </div>
+    
+    <div class="action-card disabled">
+      <div class="action-icon">📊</div>
+      <h3>Reportes</h3>
+      <p>Generar reportes y estadísticas detalladas</p>
+      <div class="card-status">En estos momentos se encuentra deshabilitada</div>
+    </div>
+    
+    <div class="action-card disabled">
+      <div class="action-icon">⚙️</div>
+      <h3>Configuración</h3>
+      <p>Ajustar configuraciones del sistema</p>
+      <div class="card-status">En estos momentos se encuentra deshabilitada</div>
+    </div>
+  </div>
+</div>
